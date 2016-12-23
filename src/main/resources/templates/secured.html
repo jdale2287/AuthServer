@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org">
+<title>Spring MVC Secure page</title>
+</head>
+<body>
+	<h1 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h1>
+	<h2>This is the secured page.</h2> 
+	<h3>You can use this page to generate JWTs (JSON Web Tokens) and validate them.</h3>           
+    <form th:action="@{/token/generate}" method="get">
+    	<textarea th:if="${jwtModel != null}" th:text="${jwtModel.jwt}" rows="5" cols="50"></textarea>
+        <input type="submit" value="Generate JWT"/>
+    </form>    
+   	<form th:action="@{/token/validate}" th:object="${jwtModel}" method="post">
+   		<p th:if="${jwtModel != null}" th:text="${jwtModel.validationMessage}"></p>
+       	<input type="submit" value="Validate JWT"/>
+   	</form>
+   	<form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</body>
+</html>

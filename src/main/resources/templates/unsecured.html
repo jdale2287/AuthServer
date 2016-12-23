@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Spring MVC Un-secure page</title>
+</head>
+<body>
+<h1>Welcome!</h1>
+<h2>This is an un-secured page</h2>
+<form th:action="@{/}" method="get">
+	<input type="submit" value="Back"/>
+</form>
+</body>
+</html>
